@@ -12,7 +12,7 @@ Il progetto nasce con l'obiettivo di approfondire lo sviluppo Python, la gestion
 La dashboard interattiva consente di monitorare le risorse del sistema,
 consultare le metriche raccolte e analizzare lo storico degli eventi.
 
-![Dashboard di CheckSystem](screenshots/dashboard.png)
+![Dashboard di CheckSystem](screenshots/dashboard.PNG)
 
 
 ## Funzionalità
