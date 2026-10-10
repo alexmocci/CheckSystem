@@ -1,0 +1,20 @@
+
+{
+  "interval_seconds": 10,
+  "disk_path": "C:\\",
+  "services": [
+    {
+      "name": "Example Website",
+      "url": "https://example.com"
+    },
+    {
+      "name": "Python Website",
+      "url": "https://www.python.org"
+    }
+  ],
+  "thresholds": {
+    "cpu_percent": 85,
+    "memory_percent": 90,
+    "disk_percent": 90
+  }
+}
