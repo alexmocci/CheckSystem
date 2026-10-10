@@ -1,75 +1,70 @@
 # CheckSystem
 
-**A lightweight system and service monitoring tool built with Python.**
+**CheckSystem** è un sistema di monitoraggio delle risorse di sistema e della disponibilità dei servizi web, sviluppato in Python.
 
-SysWatch monitors local system resources and configured web services, stores historical data in SQLite, detects threshold violations and service status changes, and presents monitoring data through a Streamlit dashboard.
+Il progetto raccoglie metriche, registra lo storico in un database SQLite e genera avvisi quando vengono superate determinate soglie. Una dashboard interattiva consente di consultare le metriche e gli eventi registrati.
 
-## Features
+Il progetto nasce con l'obiettivo di approfondire lo sviluppo Python, la gestione dei database, i test automatici e il monitoraggio dei sistemi.
 
-- **System monitoring:** CPU, memory and disk usage.
-- **Service monitoring:** HTTP availability checks and response-time tracking.
-- **Persistent storage:** SQLite database for metrics, checks and events.
-- **Configurable thresholds:** CPU, memory and disk alerts.
-- **Event tracking:** records service failures, recoveries, threshold alerts and recoveries.
-- **Telegram notifications:** optional notifications for threshold events.
-- **Interactive dashboard:** Streamlit interface for metrics and monitoring history.
-- **Command-line history:** inspect historical metrics, statistics and events.
-- **Automated tests:** pytest-based tests for core database and alert functionality.
-- **Application logging:** console and rotating file logs.
+## Funzionalità
 
-## Tech stack
+- **Monitoraggio del sistema:** rilevamento dell'utilizzo di CPU, memoria RAM e disco.
+- **Controllo dei servizi web:** verifica della raggiungibilità di URL configurati.
+- **Soglie configurabili:** definizione dei limiti per le metriche monitorate tramite `config.json`.
+- **Gestione degli avvisi:** rilevamento dei superamenti delle soglie e registrazione degli eventi di ripristino.
+- **Notifiche Telegram:** invio di notifiche per gli eventi di allarme e ripristino.
+- **Database SQLite:** archiviazione delle metriche e dello storico degli eventi.
+- **Dashboard interattiva:** visualizzazione dei dati tramite Streamlit.
+- **Logging:** registrazione delle informazioni operative e degli errori.
+- **Test automatici:** verifiche con pytest per le funzionalità principali.
+
+## Tecnologie utilizzate
 
 - Python
 - SQLite
-- psutil
-- requests
 - Streamlit
 - pandas
+- psutil
+- requests
+- python-dotenv
 - pytest
+- Git e GitHub
 
-## Requirements
+## Requisiti
 
-- Python 3.10 or newer
+- Python 3.10 o superiore
 - pip
-- Windows or Linux
-- Internet access for remote service checks and optional Telegram notifications
+- Connessione Internet per il controllo dei servizi web e le notifiche Telegram
 
-## Installation
+## Installazione
 
-Clone the repository and enter the project directory:
+Clona il repository:
 
 ```bash
 git clone https://github.com/alexmocci/CheckSystem.git
 cd CheckSystem
 ```
 
-Create and activate a virtual environment.
+Crea e attiva un ambiente virtuale.
 
-**Windows PowerShell:**
+**Windows (PowerShell):**
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-**Linux:**
+Installa le dipendenze:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-Install the dependencies:
+## Configurazione
 
-```bash
-python -m pip install -r requirements.txt
-```
+Modifica `config.json` per personalizzare l'intervallo di monitoraggio, il percorso del disco, i servizi web da controllare e le soglie di allarme.
 
-Copy `config.example.json` to `config.json` and customize the service URLs, monitoring interval, disk path and thresholds.
-
-## Configuration
-
-Example:
+Esempio della struttura di configurazione:
 
 ```json
 {
@@ -89,65 +84,63 @@ Example:
 }
 ```
 
-Use `/` as `disk_path` on Linux.
+Per abilitare le notifiche Telegram, configura le variabili d'ambiente `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID` nel file `.env`, senza pubblicare tale file su GitHub.
 
-## Running SysWatch
+## Utilizzo
 
-Start the monitoring process:
+Avvia il monitoraggio:
 
 ```bash
 python main.py
 ```
 
-Start the dashboard in a separate terminal:
+Avvia la dashboard in un secondo terminale:
 
 ```bash
-python -m streamlit run dashboard.py
+streamlit run dashboard.py
 ```
 
-Use the command-line history tools:
+Esegui i test automatici:
 
 ```bash
-python history.py metrics --limit 20
-python history.py stats --hours 24
-python history.py services --hours 24
-python history.py events --limit 20
-python history.py thresholds --limit 20
+pytest -v
 ```
 
-## Optional Telegram notifications
+Consulta lo storico degli eventi tramite le funzionalità disponibili in `history.py`.
 
-Create a Telegram bot and configure the following environment variables in a local `.env` file:
+## Struttura del progetto
 
-```dotenv
-TELEGRAM_BOT_TOKEN=your_bot_token
-TELEGRAM_CHAT_ID=your_chat_id
+```text
+CheckSystem/
+├── alerts.py
+├── check_config.py
+├── config.json
+├── dashboard.py
+├── database.py
+├── history.py
+├── logging_config.py
+├── main.py
+├── notifications.py
+├── requirements.txt
+└── tests/
+    ├── test_alerts.py
+    └── test_database.py
 ```
 
-Never commit `.env` or publish your bot token.
+## Obiettivi di sviluppo
 
-## Tests
+CheckSystem è un progetto personale in evoluzione, sviluppato per consolidare competenze pratiche in:
 
-Run the test suite:
+- programmazione Python e organizzazione del codice;
+- persistenza dei dati tramite database relazionali;
+- monitoraggio e gestione degli eventi;
+- test automatici e debugging;
+- integrazione con servizi esterni tramite API;
+- sviluppo di interfacce per la visualizzazione dei dati;
+- controllo versione tramite Git.
 
-```bash
-python -m pytest -v
-```
-
-## Project goals
-
-SysWatch is a personal portfolio project focused on practical Python development, monitoring, persistence, automated testing and basic operational tooling.
-
-## Future improvements
-
-- Improved error handling and notification reliability
-- Additional dashboard visualizations
-- More extensive test coverage
-- Packaging and deployment options
-- Support for additional notification channels
-
-## Author
+## Autore
 
 **Alessandro Mocci**
 
-GitHub: [@alexmocci](https://github.com/alexmocci/)
+GitHub: [@alexmocci](https://github.com/alexmocci)
