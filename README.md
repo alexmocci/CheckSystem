@@ -6,6 +6,15 @@ Il progetto raccoglie metriche, registra lo storico in un database SQLite e gene
 
 Il progetto nasce con l'obiettivo di approfondire lo sviluppo Python, la gestione dei database, i test automatici e il monitoraggio dei sistemi.
 
+
+## Dashboard
+
+La dashboard interattiva consente di monitorare le risorse del sistema,
+consultare le metriche raccolte e analizzare lo storico degli eventi.
+
+![Dashboard di CheckSystem](screenshots/dashboard.png)
+
+
 ## Funzionalità
 
 - **Monitoraggio del sistema:** rilevamento dell'utilizzo di CPU, memoria RAM e disco.
