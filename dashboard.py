@@ -147,7 +147,7 @@ else:
              "response_ms", "timestamp", "error"]
         ],
         hide_index=True,
-        use_container_width=True,
+        width="stretch",
     )
 
     failures = int((services["status"] != "UP").sum())
@@ -200,7 +200,7 @@ if events.empty:
 else:
     st.dataframe(
         events,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
